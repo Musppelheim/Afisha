@@ -1,4 +1,7 @@
-package ru.netology.domain;
+package ru.netology.manager;
+
+import ru.netology.repository.AfishaRepository;
+import ru.netology.domain.Movie;
 
 public class AfishaManager {
     private AfishaRepository repository;
@@ -12,19 +15,6 @@ public class AfishaManager {
     public void add(Movie item) {
         repository.save(item);
     }
-
-    Movie[] movies = {
-            new Movie(1, "Номер один", "comedy"),
-            new Movie(2, "Trolls:World trip", "cartoon"),
-            new Movie(3, "Bloodshot", "action"),
-            new Movie(4, "Invisible Man", "horror"),
-            new Movie(5, "Отель Белград", "comedy"),
-            new Movie(6, "Onward", "cartoon"),
-            new Movie(7, "The Gentlemen", "action"),
-            new Movie(8, "Parasite", "triller/comedy"),
-            new Movie(9, "Sonic The Hedgehog", "cartoon"),
-            new Movie(10, "The Irishman", "drama/crime")
-    };
 
     public Movie[] getLastItems() {
         int length = itemsToReturn;

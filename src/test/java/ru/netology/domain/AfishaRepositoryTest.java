@@ -2,22 +2,23 @@ package ru.netology.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.netology.repository.AfishaRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AfishaRepositoryTest {
     private AfishaRepository repository = new AfishaRepository();
-    Movie first = new Movie(1, "Номер один", "comedy");
-    Movie second = new Movie(2, "Trolls:World trip", "cartoon");
-    Movie third = new Movie(3, "Bloodshot", "action");
-    Movie fourth = new Movie(4, "Invisible Man", "horror");
-    Movie fifth = new Movie(5, "Отель Белград", "comedy");
-    Movie sixth = new Movie(6, "Onward", "cartoon");
-    Movie seventh = new Movie(7, "The Gentlemen", "action");
-    Movie eighth = new Movie(8, "Parasite", "triller/comedy");
-    Movie ninth = new Movie(9, "Sonic The Hedgehog", "cartoon");
-    Movie tenth = new Movie(10, "The Irishman", "drama/crime");
-    Movie eleventh = new Movie(11, "Joker", "drama/crime");
+    private Movie first = new Movie(1, "Номер один", "comedy");
+    private Movie second = new Movie(2, "Trolls:World trip", "cartoon");
+    private Movie third = new Movie(3, "Bloodshot", "action");
+    private Movie fourth = new Movie(4, "Invisible Man", "horror");
+    private Movie fifth = new Movie(5, "Отель Белград", "comedy");
+    private Movie sixth = new Movie(6, "Onward", "cartoon");
+    private Movie seventh = new Movie(7, "The Gentlemen", "action");
+    private Movie eighth = new Movie(8, "Parasite", "triller/comedy");
+    private Movie ninth = new Movie(9, "Sonic The Hedgehog", "cartoon");
+    private Movie tenth = new Movie(10, "The Irishman", "drama/crime");
+    private Movie eleventh = new Movie(11, "Joker", "drama/crime");
 
 
     @BeforeEach
@@ -50,6 +51,11 @@ class AfishaRepositoryTest {
     void shouldFindById() {
         assertEquals(second, repository.findById(2));
         assertEquals(sixth, repository.findById(6));
+    }
+
+    @Test
+    void shouldFindByIdOverTen() {
+        repository.findById(11);
         assertEquals(null, repository.findById(11));
     }
 
@@ -59,6 +65,12 @@ class AfishaRepositoryTest {
         repository.removeById(idToRemove);
         assertArrayEquals(new Movie[]{first, second, third, fifth, sixth, seventh, eighth, ninth, tenth}, repository.findAll());
 
+    }
+
+    @Test
+    void shouldNoRemoveByIdIfNotExist() {
+        int idToRemove = 27;
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> repository.removeById(idToRemove));
     }
 
     @Test

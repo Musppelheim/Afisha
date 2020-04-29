@@ -5,6 +5,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import ru.netology.manager.AfishaManager;
+import ru.netology.repository.AfishaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.mockito.Mockito.*;
@@ -16,17 +18,17 @@ class AfishaManagerTest {
     @InjectMocks
     private AfishaManager manager;
 
-    Movie first = new Movie(1, "Номер один", "comedy");
-    Movie second = new Movie(2, "Trolls:World trip", "cartoon");
-    Movie third = new Movie(3, "Bloodshot", "action");
-    Movie fourth = new Movie(4, "Invisible Man", "horror");
-    Movie fifth = new Movie(5, "Отель Белград", "comedy");
-    Movie sixth = new Movie(6, "Onward", "cartoon");
-    Movie seventh = new Movie(7, "The Gentlemen", "action");
-    Movie eighth = new Movie(8, "Parasite", "triller/comedy");
-    Movie ninth = new Movie(9, "Sonic The Hedgehog", "cartoon");
-    Movie tenth = new Movie(10, "The Irishman", "drama/crime");
-    Movie eleventh = new Movie(11, "Joker", "drama/crime");
+    private Movie first = new Movie(1, "Номер один", "comedy");
+    private Movie second = new Movie(2, "Trolls:World trip", "cartoon");
+    private Movie third = new Movie(3, "Bloodshot", "action");
+    private Movie fourth = new Movie(4, "Invisible Man", "horror");
+    private Movie fifth = new Movie(5, "Отель Белград", "comedy");
+    private Movie sixth = new Movie(6, "Onward", "cartoon");
+    private Movie seventh = new Movie(7, "The Gentlemen", "action");
+    private Movie eighth = new Movie(8, "Parasite", "triller/comedy");
+    private  Movie ninth = new Movie(9, "Sonic The Hedgehog", "cartoon");
+    private  Movie tenth = new Movie(10, "The Irishman", "drama/crime");
+    private Movie eleventh = new Movie(11, "Joker", "drama/crime");
 
     @Test
     void shouldAdd() {
