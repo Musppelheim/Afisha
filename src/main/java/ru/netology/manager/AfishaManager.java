@@ -5,30 +5,38 @@ import ru.netology.domain.Movie;
 
 public class AfishaManager {
     private AfishaRepository repository;
-    private int itemsToReturn;
+    private int moviesToReturn;
 
     public AfishaManager(AfishaRepository repository) {
         this.repository = repository;
-        this.itemsToReturn = 10;
+        this.moviesToReturn = 10;
     }
 
-    public void add(Movie item) {
-        repository.save(item);
+    public void add(Movie movie) {
+        repository.save(movie);
     }
 
-    public Movie[] getLastItems() {
-        int length = itemsToReturn;
-        Movie[] items = repository.findAll();
-        if (length > items.length) {
-            length = items.length;
+    public Movie[] getLastAdded(int numberOfMoviesShown) {
+        Movie[] movies = repository.findAll();
+        int moviesLength = movies.length;
+        int maxMovies = 10;
+        if (numberOfMoviesShown <= 0 || numberOfMoviesShown > maxMovies) {
+            numberOfMoviesShown = maxMovies;
         }
-
-        Movie[] result = new Movie[length];
-
-        for (int i = 0; i < length; i++) {
-            int index = items.length - i - 1;
-            result[i] = items[index];
+        if (maxMovies > moviesLength) {
+            maxMovies = moviesLength;
         }
-        return result;
+        if (numberOfMoviesShown <= maxMovies) {
+            maxMovies = numberOfMoviesShown;
+        } else {
+            maxMovies = moviesLength;
+        }
+        Movie[] chosenMovie = new Movie[maxMovies];
+        for (int current = 0; current < chosenMovie.length; current++) {
+            int result = moviesLength - current - 1;
+            chosenMovie[current] = movies[result];
+        }
+        return chosenMovie;
     }
+
 }

@@ -45,7 +45,7 @@ class AfishaManagerTest {
         doNothing().when(repository).save(fourth);
 
         manager.add(fourth);
-        Movie[] actual = manager.getLastItems();
+        Movie[] actual = manager.getLastAdded(10);
         Movie[] expected = new Movie[]{third, second, first};
 
         assertArrayEquals(expected, actual);
@@ -72,7 +72,7 @@ class AfishaManagerTest {
         };
         doReturn(returned).when(repository).findAll();
 
-        Movie[] actual = manager.getLastItems();
+        Movie[] actual = manager.getLastAdded(10);
         Movie[] expected = new Movie[]{tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
 
         assertArrayEquals(expected, actual);

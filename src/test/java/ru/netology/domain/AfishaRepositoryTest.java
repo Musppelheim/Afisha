@@ -21,6 +21,7 @@ class AfishaRepositoryTest {
     private Movie eleventh = new Movie(11, "Joker", "drama/crime");
 
 
+
     @BeforeEach
     void setUp() {
         repository.save(first);
@@ -56,7 +57,7 @@ class AfishaRepositoryTest {
     @Test
     void shouldFindByIdOverTen() {
         repository.findById(11);
-        assertEquals(null, repository.findById(11));
+        assertNull(null);
     }
 
     @Test
