@@ -57,7 +57,7 @@ class AfishaRepositoryTest {
     @Test
     void shouldFindByIdOverTen() {
         repository.findById(96);
-        assertNull(repository.findById(96), (String) null);
+        assertNull(repository.findById(96));
     }
 
     @Test
